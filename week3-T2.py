@@ -125,7 +125,7 @@ combined = list(zip(only_title, only_like_dislike, publish_time))
 num = len(combined)
 #print(num)
 
-with open("article.csv", mode="w", newline="") as file:
+with open("article.csv", mode="w", newline="", encoding="utf-8") as file:
     writer = csv.writer(file)
     #將連在一起的list，分開寫入csv，變成一行一行
     for i in range(0, num):
