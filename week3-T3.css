@@ -1,0 +1,291 @@
+/*確保內容會佔據整個螢幕*/
+.body{
+    min-height: 100vh;
+}
+
+
+/*點開漢堡後要出現的表單*/
+/*消除預設的margin跟padding*/
+*{margin: 0;
+    padding: 0;
+}
+/*表單設計*/
+nav{
+    background-color: white;
+    /*box-shadow: ;加深陰影*/
+}
+
+nav ul{
+    width: 100%; /*expand full width of its container*/
+    list-style: none; /**/
+    display: flex;
+    justify-content: flex-end; /*左右或置中，可加align-item做垂直置中*/
+    align-items: center;
+}
+
+nav li{
+    height:50px;
+}
+
+nav a{
+    height: 100%; /*to match the height of the list items*/
+    padding: 0 10px;
+    text-decoration: none; /*remove the default underline*/
+    display: flex;
+    align-items: center; /*center the link content vertically*/
+    color: black;
+}
+
+/*游標在字上移動，就有灰色背景出現*/
+nav a:hover{
+    background-color: lightgray;
+}
+
+/*選擇第一個item使他靠左邊*/
+nav li:first-child{
+    margin-right: auto;
+}
+
+
+/*開始做sidebar*/
+.sidebar{
+    position: fixed; /*因為不想要sidebar影響其他的item*/
+    top: 0;
+    right: 0;
+    height: 100vh; /*full height of the screen*/
+    width: 250px;
+    z-index: 999; /*確保sidebar永遠在最上面的圖層，蓋過其他東西*/
+    background-color: white;
+    /*box-shadow: ;加深陰影*/
+
+
+    display: none; /*讓item從上排到下*/
+    flex-direction: column;
+    align-items: center; /*有問題!!!!!*/
+    justify-content: flex-start; /*把item移到上面*/
+
+    /*backdrop-filter: blur(10px); /*決定在這個sidebar後面的東西看起來如何*/
+}
+
+.sidebar li{
+    width: 100%; /*讓list寬度充滿container*/
+}
+
+.sidebar a{
+    width: 100%; /*確保寬度充滿container*/
+}
+
+
+.showOnMobile{
+    display: none;
+}
+
+p{
+    font-size: 20px;
+}
+
+
+/*超大橫幅Welcome to My Home*/
+.navigation{
+    background-color: lightcyan;
+    height: 250px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome{
+    font-size: 40px;
+    text-align: center;
+}
+
+  
+
+
+
+
+
+
+/*promotion*/
+.wrapper1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.grid-container-promo{
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr) ; /*1fr 1fr 1fr 可以寫成 (3, 1fr)*/
+    grid-template-rows: 50px;
+    width: 1200px;
+
+    column-gap: 20px;
+    row-gap: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.card-promo{
+    display: flex;
+
+    /*margin: 10px;*/
+
+}
+
+.card-promo img{
+    object-fit: cover;
+
+    width: 80px;
+    height: 100%;
+}
+
+.text-pp{
+    background-color: lightcyan;
+ 
+    display: flex;
+    align-items: center;
+
+    font-size: 20px;
+    width: 100%;
+
+}
+
+
+
+
+
+
+
+
+/*Title1-10，練習grid*/
+.wrapper2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-container{
+    display: grid;
+    /*居然用(100%-40px)/3版面會跑掉，為什麼?*/
+    grid-template-columns: calc(1160px/3) repeat(4, 1fr) ; 
+    grid-template-rows: 200px 200px;
+    width: 1200px;
+
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
+.card{
+    position: relative;
+    /*margin: 10px;*/
+
+
+}
+
+/*重要!是在card裡面選img*/
+.card img{    
+    width: 100%; /*Ensure the image fills the grid item*/
+    height: 100%; /*Ensure the image fills the grid item*/
+    object-fit: cover;
+    object-position: 0 0;
+}
+
+/*選第二張img*/
+.card img:nth-child(2){
+    position: absolute;
+    width: 30px;
+    height: auto;
+    right: 0;
+    opacity: 80%;    
+}
+
+.text{
+    position: absolute;
+    background-color: blueviolet;    
+    bottom: 0; /*Align text to the bottom of the grid item*/
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    background-color: rgba(127, 229, 255, 0.336);
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width:601px) and (max-width:1200px){
+
+
+    .grid-container-promo{    
+        grid-template-columns: repeat(2, 1fr) ; /*1fr 1fr 1fr 可以寫成 (3, 1fr)*/
+        grid-template-rows: repeat(2, 50px);
+        width: 90%;
+    }
+
+    .card-promo:last-child{
+        grid-column: span 2;  /*奇怪*/
+
+    }    
+    
+    
+    .grid-container{
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 200px);
+
+        width: 90%;
+    }
+
+    .card:nth-last-child(-n+2){
+        grid-column: span 2; /*不太確定*/
+    }
+}
+
+
+
+
+@media screen and  (max-width:600px){
+
+    .grid-container-promo{    
+        grid-template-columns: 1fr ; /*1fr 1fr 1fr 可以寫成 (3, 1fr)*/
+        grid-template-rows: repeat(3, 50px);
+        width: 90%;
+    }
+
+    .grid-container{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(10, 200px);
+
+        width: 90%;
+    }
+
+    /*隱藏item*/
+    .item{
+        display: none;
+    }
+    /*讓他出現*/
+    .burger-menu-icon{
+        display: block;
+    }
+
+
+
+    .hideOnMobile{
+        display: none;
+    }
+
+    .showOnMobile{
+        display: block;
+    }
+}

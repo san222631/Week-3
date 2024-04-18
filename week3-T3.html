@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="week3-T3.css" />
+        <script src="week-1.js"></script> <!--這個應該目前沒用到-->
+        <title>Week-1</title>
+    </head>
+
+
+    <body>
+
+
+        <!--點開漢堡後要出現的表單-->
+        <nav>
+            <ul class="sidebar">
+                <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+                <li><a href="#"><p>Item 1</p></a></li>
+                <li><a href="#"><p>Item 2</p></a></li>
+                <li><a href="#"><p>Item 3</p></a></li>
+                <li><a href="#"><p>Item 4</p></a></li>
+            </ul>
+            <ul>
+                <li><a href="#"><p>My Website</p></a></li>
+                <li class="hideOnMobile"><a href="#"><p>Item 1</p></a></li>
+                <li class="hideOnMobile"><a href="#"><p>Item 2</p></a></li>
+                <li class="hideOnMobile"><a href="#"><p>Item 3</p></a></li>
+                <li class="hideOnMobile"><a href="#"><p>Item 4</p></a></li>
+                <!--onclick & showSidebar are functions in js-->
+                <li class="showOnMobile" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+            </ul>
+        </nav>    
+
+        <div class="navigation">
+            <div class="welcome">
+            Welcome to MyHome
+            </div>
+        </div>
+        
+        <!--result的資料會出現在這邊-->
+        <div id="result"></div>
+        <!--small box-->
+        <div class="wrapper1">
+            <div class="grid-container-promo">
+
+                <div class="card-promo" id="pm1">
+                    <!--<img class="image-pp" src="onepiece.jpg"/>-->
+                    <!--<div class="text-pp">Promotion 1</div>-->
+                </div>
+                <div class="card-promo" id="pm2">
+                    <!--<img class="image-pp" src="onepiece.jpg"/>-->
+                    <!--<div class="text-pp">Promotion 2</div>-->
+                </div>
+                <div class="card-promo" id="pm3">
+                    <!--<img class="image-pp" src="onepiece.jpg"/>-->
+                    <!--<div class="text-pp">Promotion 3</div>-->
+                </div>        
+            </div>
+        </div>
+
+
+        <!--big box-->
+        <div class="wrapper2">
+            <div class="grid-container">
+
+                <div class="card" id="tt1">
+                    <!--<img class="background" src="onepiece.jpg">-->
+                    <!--<img class="star-1" src="star.png">-->
+                    <!--<div class="text">Title 1</div>-->
+                </div>
+                <div class="card" id="tt2">
+                    <!--<img class="background" src="onepiece.jpg">-->
+                    <!--<img class="star-1" src="star.png">-->
+                    <!--<div class="text">Title 2</div>-->
+                </div>
+                <div class="card" id="tt3">
+                    <!--<img class="background" src="onepiece.jpg">-->
+                    <!--<img class="star-1" src="star.png">-->
+                    <!--<div class="text">Title 3</div>-->
+                </div>
+                <div class="card" id="tt4">
+                    <!--<img class="background" src="onepiece.jpg">-->
+                    <!--<img class="star-1" src="star.png">-->
+                    <!--<div class="text">Title 4</div>-->
+                </div>
+                <div class="card" id="tt5">
+                    <!--<img class="background" src="onepiece.jpg">-->
+                    <!--<img class="star-1" src="star.png">-->
+                    <!--<div class="text">Title 5</div>-->
+                </div>
+                <div class="card" id="tt6">
+                    <!--<img class="background" src="onepiece.jpg">-->
+                    <!--<img class="star-1" src="star.png">-->
+                    <!--<div class="text">Title 6</div>-->
+                </div>
+                <div class="card" id="tt7">
+                    <!--<img class="background" src="onepiece.jpg">-->
+                    <!--<img class="star-1" src="star.png">-->
+                    <!--<div class="text">Title 7</div>-->
+                </div>
+                <div class="card" id="tt8">
+                    <!--<img class="background" src="onepiece.jpg">-->
+                    <!--<img class="star-1" src="star.png">-->
+                    <!--<div class="text">Title 8</div>-->
+                </div>
+                <div class="card" id="tt9">
+                    <!--<img class="background" src="onepiece.jpg">-->
+                    <!--<img class="star-1" src="star.png">-->
+                    <!--<div class="text">Title 9</div>-->
+                </div>
+                <div class="card" id="tt10">
+                    <!--<img class="background" src="onepiece.jpg">-->
+                    <!--<img class="star-1" src="star.png">-->
+                    <!--<div class="text">Title 10</div>-->
+                </div>
+            </div>
+        </div>
+
+        <script>
+            //應該可以用"標籤.innerText="""加上標題
+            //document.createElement() 一定要用
+            //appendChild() 一定要用
+
+            //利用fetch進行連線並取得資料
+            fetch(
+                "https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment-1"
+                )
+                .then(function(response){
+                    return response.json();
+                })
+                .then(function(data){
+                    console.log(data); //在console印出來，確認一下資料
+                    let result=document.querySelector("#result"); //取得標籤物件
+                    //把data裡面的資料一筆一筆抓出來
+
+                    //先把畫面清空，讓資料不會一直堆疊接在後面
+                    result.innerHTML="";
+
+                    for (let i=0; i<data.data.results.length; i++){
+                        let spot=data.data.results[i];
+                        console.log(spot);
+                        console.log(spot["stitle"]);
+
+                        //重要!把資料呈現在網頁上! 也記得用+=添加，只用=會覆蓋資料
+                        //result.innerHTML+="<div>"+spot.name+","+spot.price+","+spot.description+"</div>";
+
+                    }
+
+                    const base = data.data.results;
+                    //small box
+                    for (let i=0; i<base.length && i<3; i++){
+                        const spotData = base[i];
+                        //console.log(spotData)
+
+                        //加入small box的圖
+                        //<div class="card-promo" id="pm1">
+                        //<img class="image-pp" src="onepiece.jpg"/>
+                        const imgList = spotData.filelist;
+                        const images = imgList.split('https'); 
+                        const firstImageUrl = 'https' + images[1]; //第0個item會是""
+                        //console.log(firstImageUrl)
+
+                        const imgElement = document.createElement('img');
+                        //把image-pp跟src都加入
+                        imgElement.className = 'image-pp';
+                        imgElement.src = firstImageUrl;
+
+
+
+                        //加入small box的字
+                        const textPP = document.createElement('DIV');
+                        textPP.className = 'text-pp';
+                        textPP.innerText = spotData["stitle"];
+                        //console.log(textPP)
+
+                        //要把textPP加入<div class="card-promo">的下面
+                        const cardPromo = document.getElementById(`pm${i + 1}`); //這個功能 `${}` 很重要只能用``!!!
+                        //確認cardPromo是否存在，存在才加東西
+                        if (cardPromo){
+                            cardPromo.appendChild(imgElement);
+                            cardPromo.appendChild(textPP);
+                        }
+                    }
+
+
+
+                    //big box
+                    for (let i=3; i<base.length && i<13; i++){
+                        const spotData2 = base[i];
+                        //console.log(spotData)
+
+
+                        //加入big box的圖
+                        //<div class="card" id="tt1">
+                        //<img class="background" src="onepiece.jpg">
+                        const imgList2 = spotData2.filelist;
+                        const images2 = imgList2.split('https'); 
+                        const firstImageUrl2 = 'https' + images2[1]; //第0個item會是""
+                        console.log(firstImageUrl2)
+
+                        const imgElement2 = document.createElement('img');
+                        //把background跟src都加入
+                        imgElement2.className = 'background';
+                        imgElement2.src = firstImageUrl2;
+
+                        //加星星
+                        //<img class="star-1" src="star.png">
+                        const star = document.createElement('img');
+                        star.className = 'star-1';
+                        star.src = "star.png";
+
+
+                        //加入big box的字
+                        const text = document.createElement('DIV');
+                        text.className = 'text';
+                        text.innerText = spotData2["stitle"];
+                        //console.log(textPP)
+
+                        //要把textPP加入<div class="card-promo">的下面
+                        const card = document.getElementById(`tt${i - 2}`); //這個功能 `${}` 很重要只能用``!!!
+                        //確認cardPromo是否存在，存在才加東西
+                        if (card){
+                            card.appendChild(imgElement2);
+                            card.appendChild(star);
+                            card.appendChild(text);
+                        }
+
+                        //加入big box的字
+                        //<div class="card" id="tt1">
+                        //<div class="text">Title 1</div>
+                    }
+
+
+                });
+            
+
+
+            //替代smallbox的圖片跟promotion1-3
+            //<div class="card-promo" id="pm1">
+            //<img class="image-pp" src="onepiece.jpg"/>            
+            //<div class="text-pp">Promotion 1</div>
+
+            //const imgJPG = data.data.results[0]
+
+            //const textPP = document.createElement('DIV');
+            //textPP.className = 'text-pp';
+            //textPP.innerText = data.data.results["0"]["stitle"]
+            //let spotTitle = data.data.results["0"]
+            //console.log(spotTitle)
+            
+
+
+
+            //define the function,選擇.sidebar以後，將裡面style的display改成flex
+            function showSidebar(){
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'flex'
+            }
+            function hideSidebar(){
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'none'
+            }
+
+
+        </script>
+
+
+
+    </body> 
+
+
+
+</html>
