@@ -125,21 +125,21 @@ p{
     column-gap: 20px;
     row-gap: 20px;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 20px;    
 }
 
 .card-promo{
-    display: flex;
+    display: flex;       
 
     /*margin: 10px;*/
 
 }
-
-.card-promo img{
-    object-fit: cover; /*cover*/
-
+/*本來是card-promo img{}*/
+.image-pp{
+    /*object-fit: cover; /*cover*/
+    flex: 1 0 auto;
     width: 80px;
-    height: 100%; /*100% 或改成>50px，圖片會拉高，寬度80px維持不變，比例失調*/
+     /*height: 100% 或改成>50px，圖片會拉高，寬度80px維持不變，比例失調*/
 }
 
 .text-pp{
@@ -151,14 +151,8 @@ p{
     font-size: 20px;
     width: 100%;
 
+    padding-left: 5px;
 }
-
-
-
-
-
-
-
 
 /*Title1-10，練習grid*/
 .wrapper2{
@@ -181,8 +175,6 @@ p{
 .card{
     position: relative;
     /*margin: 10px;*/
-
-
 }
 
 /*重要!是在card裡面選img*/
@@ -190,7 +182,7 @@ p{
     width: 100%; /*Ensure the image fills the grid item*/
     height: 100%; /*Ensure the image fills the grid item*/
     object-fit: cover;
-    object-position: 0 0;
+    object-position: 0 -30px;
 }
 
 /*選第二張img*/
@@ -214,6 +206,10 @@ p{
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+
+    padding-top: 3px;
+    padding-bottom: 3px;
+
 }
 
 
