@@ -100,12 +100,6 @@ p{
     text-align: center;
 }
 
-  
-
-
-
-
-
 
 /*promotion*/
 .wrapper1{
@@ -136,10 +130,9 @@ p{
 }
 /*本來是card-promo img{}*/
 .image-pp{
-    /*object-fit: cover; /*cover*/
+    object-fit: cover; /*cover*/
     flex: 1 0 auto;
     width: 80px;
-     /*height: 100% 或改成>50px，圖片會拉高，寬度80px維持不變，比例失調*/
 }
 
 .text-pp{
@@ -163,7 +156,7 @@ p{
 
 .grid-container{
     display: grid;
-    /*居然用(100%-40px)/3版面會跑掉，為什麼?*/
+    /*也可用(100% - 40px)*/
     grid-template-columns: calc(1160px/3) repeat(4, 1fr) ; 
     grid-template-rows: 200px 200px;
     width: 1200px;
@@ -174,7 +167,6 @@ p{
 
 .card{
     position: relative;
-    /*margin: 10px;*/
 }
 
 /*重要!是在card裡面選img*/
@@ -182,7 +174,11 @@ p{
     width: 100%; /*Ensure the image fills the grid item*/
     height: 100%; /*Ensure the image fills the grid item*/
     object-fit: cover;
-    object-position: 0 -30px;
+    object-position: 0 0;
+}
+
+.background{
+    object-position: -30px 0;
 }
 
 /*選第二張img*/

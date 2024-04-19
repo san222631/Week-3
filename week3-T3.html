@@ -4,10 +4,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width initial-scale=1.0" />
         <link rel="stylesheet" type="text/css" href="week3-T3.css" />
-        <script src="week-1.js"></script> <!--這個應該目前沒用到-->
+        <!--<script src="week-1.js"></script> 這個目前沒用到-->
         <title>Week-1</title>
     </head>
-
 
     <body>
 
@@ -38,7 +37,7 @@
             </div>
         </div>
         
-        <!--result的資料會出現在這邊，為什麼刪掉這一行網頁就會不能用-->
+        <!--result的資料會出現在這邊，為什麼刪掉這一行網頁就會不能用?-->
         <div id="result"></div>
         <!--small box-->
         <div class="wrapper1">
@@ -153,23 +152,19 @@
                         const spotData = base[i];
                         //console.log(spotData)
 
-                        //加入small box的圖
-                        //<div class="card-promo" id="pm1">
-                        //<img class="image-pp" src="onepiece.jpg"/>
+                        //small box的圖的url
                         const imgList = spotData.filelist;
                         const images = imgList.split('https'); 
                         const firstImageUrl = 'https' + images[1]; //第0個item會是""
                         //console.log(firstImageUrl)
 
+                        //製作<img>
                         const imgElement = document.createElement('img');
                         //把image-pp跟src都加入
                         imgElement.className = 'image-pp';
                         imgElement.src = firstImageUrl;
-                        imgElement.id= 'small-img';
 
-
-
-                        //加入small box的字
+                        //small box的字
                         const textPP = document.createElement('DIV');
                         textPP.className = 'text-pp';
                         textPP.innerText = spotData["stitle"];
@@ -192,9 +187,7 @@
                         //console.log(spotData)
 
 
-                        //加入big box的圖
-                        //<div class="card" id="tt1">
-                        //<img class="background" src="onepiece.jpg">
+                        //big box的圖
                         const imgList2 = spotData2.filelist;
                         const images2 = imgList2.split('https'); 
                         const firstImageUrl2 = 'https' + images2[1]; //第0個item會是""
@@ -206,13 +199,12 @@
                         imgElement2.src = firstImageUrl2;
 
                         //加星星
-                        //<img class="star-1" src="star.png">
                         const star = document.createElement('img');
                         star.className = 'star-1';
                         star.src = "star.png";
 
 
-                        //加入big box的字
+                        //big box的字
                         const text = document.createElement('DIV');
                         text.className = 'text';
                         text.innerText = spotData2["stitle"];
@@ -226,30 +218,8 @@
                             card.appendChild(star);
                             card.appendChild(text);
                         }
-
-                        //加入big box的字
-                        //<div class="card" id="tt1">
-                        //<div class="text">Title 1</div>
                     }
-
-
-                });
-            
-
-
-            //替代smallbox的圖片跟promotion1-3
-            //<div class="card-promo" id="pm1">
-            //<img class="image-pp" src="onepiece.jpg"/>            
-            //<div class="text-pp">Promotion 1</div>
-
-            //const imgJPG = data.data.results[0]
-
-            //const textPP = document.createElement('DIV');
-            //textPP.className = 'text-pp';
-            //textPP.innerText = data.data.results["0"]["stitle"]
-            //let spotTitle = data.data.results["0"]
-            //console.log(spotTitle)
-            
+                });                
 
 
 
@@ -262,14 +232,6 @@
                 const sidebar = document.querySelector('.sidebar')
                 sidebar.style.display = 'none'
             }
-
-
         </script>
-
-
-
     </body> 
-
-
-
 </html>
